@@ -38,6 +38,7 @@ bool list_empty(list l);
 size_t list_size(list l);
 
 void list_clear(list l);
+void list_free(list l);
 
 list_node list_begin(list l);
 list_node list_end(list l);
@@ -194,6 +195,12 @@ void list_clear(list l) {
     }
 
     l->_size = 0;
+}
+
+void list_free(list l) {
+    list_clear(l);
+    free(l);
+    l = NULL;
 }
 
 list_node list_begin(list l) {

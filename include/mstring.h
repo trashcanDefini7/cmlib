@@ -78,6 +78,7 @@ mstring mstring_clone(mstring str) {
 void mstring_free(mstring str) {
     free(str->_data);
     free(str);
+    str = NULL;
 }
 
 const char* mstring_raw(mstring str) {
