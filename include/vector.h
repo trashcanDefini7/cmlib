@@ -21,7 +21,7 @@ void vector_resize(vector vec, size_t new_size);
 
 vector vector_alloc();
 vector vector_new(size_t element_size);
-vector vector_free(vector vec);
+void vector_free(vector vec);
 void vector_clear(vector vec);
 
 size_t vector_max_size();
@@ -72,7 +72,7 @@ vector vector_new(size_t element_size) {
     return vec;
 }
 
-vector vector_free(vector vec) {
+void vector_free(vector vec) {
     free(vec->data);
     free(vec);
 }
