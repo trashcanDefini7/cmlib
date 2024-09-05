@@ -13,9 +13,6 @@ typedef struct __vector {
     void** data;
 } _vector, *vector;
 
-#ifdef VECTOR_IMPL
-#undef VECTOR_IMPL
-
 void vector_reserve(vector vec, size_t new_capacity);
 void vector_resize(vector vec, size_t new_size);
 
@@ -33,7 +30,8 @@ size_t vector_capacity(vector vec);
 void vector_push_back(vector vec, const void* value);
 void vector_pop_back(vector vec);
 
-#endif
+#ifdef VECTOR_IMPL
+#undef VECTOR_IMPL
 
 void vector_reserve(vector vec, size_t new_capacity) {
     void** temp = vec->data;
@@ -138,5 +136,7 @@ void vector_pop_back(vector vec) {
     vec->_size--;
     vec->data[vec->_last_index--] = NULL;
 }
+
+#endif
 
 #endif
